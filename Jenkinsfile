@@ -23,7 +23,7 @@ pipeline {
         stage('Deploy to Staging') {
             steps {
                 sh 'echo Deploying to Staging Environment...'
-                // sh 'docker-compose -f docker-compose.staging.yml up -d' 
+                sh 'export NODE_ENV=staging && docker-compose up -d'
             }
         }
 
@@ -36,7 +36,7 @@ pipeline {
         stage('Deploy to Production') {
             steps {
                 sh 'echo Deploying to Production...'
-                // sh 'docker-compose -f docker-compose.prod.yml up -d'
+                sh 'export NODE_ENV=production && docker-compose up -d'
             }
         }
     }
